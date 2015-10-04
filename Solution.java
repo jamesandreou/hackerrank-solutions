@@ -13,37 +13,22 @@ public class Solution {
         int nTests = sc.nextInt();
         for (int t = 0; t < nTests; t++){
             int n = sc.nextInt();
-            int []arr = new int[n];
+            long []arr = new long[n];
             for (int i = 0; i < n; i++){
-                arr[i] = sc.nextInt();
+                arr[i] = sc.nextLong();
             }
-            System.out.println(contMax(arr) + " " + nonContMax(arr));
+            System.out.println(maxProfit(arr));
         }
     }
 
-    static int contMax(int [] arr){
-        int curMax = 0;
-        int lastMax = 0;
-        int maxNeg = Integer.MIN_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] <= 0 && arr[i] > maxNeg) maxNeg = arr[i];
-            lastMax = lastMax + arr[i];
-            if(lastMax < 0) lastMax = 0;
-            if(curMax < lastMax) curMax = lastMax;
+    static long maxProfit(long [] arr){
+        long total = 0;
+        long maxVal = 0;
+        for(int i = arr.length - 1; i >= 0; i--){
+            maxVal = Math.max(maxVal, arr[i]);
+            total += maxVal - arr[i];
         }
-        return (curMax > 0) ? curMax : maxNeg;
+        return total;
     }
 
-    static int nonContMax(int [] arr){
-        int max = 0;
-        int maxNeg = Integer.MIN_VALUE;
-        for(int i = 0; i < arr.length; i++){
-            if(arr[i] > 0){
-                max += arr[i];
-            }else if(arr[i] > maxNeg){
-                maxNeg = arr[i];
-            }
-        }
-        return (max > 0) ? max : maxNeg;
-    }
 }
