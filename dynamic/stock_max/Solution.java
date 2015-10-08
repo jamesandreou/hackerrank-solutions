@@ -1,4 +1,4 @@
-// hackerrank - Algorithms: The Maximum Subarray
+// hackerrank - Algorithms: Stock Max
 // Written by James Andreou, University of Waterloo
 import java.io.*;
 import java.util.*;
